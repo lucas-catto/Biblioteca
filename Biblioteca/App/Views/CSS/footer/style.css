@@ -1,0 +1,12 @@
+
+:root{ --default: #102960; }
+
+footer{
+    width:            100%;
+    height:           auto;
+    padding:          10px;
+    background-color: var(--default);
+    text-align:       center;
+}
+
+footer p { color: white; }
