@@ -1,6 +1,7 @@
 <?php
 
     include './Controllers/HomeController.php';
+    include './Controllers/LogarController.php';
 
     $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     // echo $url;
@@ -21,6 +22,9 @@
         case '/admin':
             HomeController::admin();
             break;
+
+        case '/logar':
+            LogarController::logar();
         
         default:
             HomeController::notFound();
