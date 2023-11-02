@@ -22,7 +22,7 @@
             <main>
                 <h2>Login</h2>
     
-                <form id="form" action="/tentar_login" method="post"> <!-- redirect for the same page -->
+                <form id="form" action="/tentar_login" method="post">
                     <input  type="email"    name="email"    placeholder="Email">
                     <input  type="password" name="password" placeholder="Senha">
                     <button type="submit"   name="submit">Logar</button>
