@@ -38,10 +38,15 @@ CREATE TABLE Livros (
 CREATE TABLE Usuarios (
     UsuarioId                INT          NOT NULL AUTO_INCREMENT,
     UsuarioNome              VARCHAR(80),
+    UsuarioEmail             VARCHAR(80),
+    UsuarioSenha             VARCHAR(355),
+
     UsuarioIsAdmin           BOOLEAN,
     -- fk
     UsuarioEmprestimosAtivos INT,
-    UsuarioHistorico         INT
+    UsuarioHistorico         INT,
+    
+    PRIMARY KEY(UsuarioId)
 );
 
 /*

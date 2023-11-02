@@ -22,6 +22,10 @@
             HomeController::admin();
             break;
         
+        case '/tentar_login':
+            HomeController::tentar_login();
+            break;
+        
         default:
             HomeController::notFound();
             break;
