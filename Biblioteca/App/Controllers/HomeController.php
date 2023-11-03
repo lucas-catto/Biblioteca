@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     class HomeController {
         
         public static function index () {
@@ -33,6 +35,19 @@
                 $loginService = new LoginService();
                 $loginService->login($login->email, $login->password);
             }
+        }
+
+        public static function novo_aluno () {
+            include './Models/Admin/Pages/NovoAluno.php';
+
+            $novoAluno = new NovoAluno();
+
+            $novoAluno->nome          = isset($_POST["name"])          ?  $_POST["name"]          : "";
+            $novoAluno->email         = isset($_POST["email"])         ?  $_POST["email"]         : "";
+            $novoAluno->tipoDeUsuario = isset($_POST["tipoDeUsuario"]) ?  $_POST["tipoDeUsuario"] : "";
+            $novoAluno->senha         = isset($_SESSION['Senha'])      ? $_SESSION['Senha']       : "";
+
+            $novoAluno->novoAluno($novoAluno->nome, $novoAluno->email, $novoAluno->tipoDeUsuario, $novoAluno->senha);
         }
 
         public static function notFound () {

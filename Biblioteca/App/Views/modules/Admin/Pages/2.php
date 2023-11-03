@@ -1,9 +1,14 @@
+<?php
+    session_start();
+?>
 
 <style>
     @import url('./Views/CSS/Admin/Pages/2.css');
 </style>
 
 <?php
+    
+
     function passwordGenerate($size=6){
         $numbers     = '123456789';
         $newPassword = '';
@@ -36,7 +41,11 @@
         </div>
             
         <?php
-            $currentPassword = passwordGenerate();
+            
+            
+            $currentPassword   = passwordGenerate();
+            $_SESSION['Senha'] = $currentPassword;
+
             echo "<p>Senha: <strong>" . $currentPassword . "</strong></p>"; //  - Trocar senha ao logar.
         ?>
         

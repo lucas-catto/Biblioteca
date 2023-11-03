@@ -25,6 +25,10 @@
         case '/tentar_login':
             HomeController::tentar_login();
             break;
+
+        case '/novo_aluno':
+            HomeController::novo_aluno();
+            break;
         
         default:
             HomeController::notFound();

@@ -36,18 +36,22 @@ CREATE TABLE Livros (
 );
 
 CREATE TABLE Usuarios (
-    UsuarioId                INT          NOT NULL AUTO_INCREMENT,
-    UsuarioNome              VARCHAR(80),
-    UsuarioEmail             VARCHAR(80),
-    UsuarioSenha             VARCHAR(355),
+    UsuarioId                INT          NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    UsuarioNome              VARCHAR(80)  NOT NULL,
+    UsuarioEmail             VARCHAR(80)  NOT NULL,
+    UsuarioSenha             VARCHAR(355) NOT NULL
+);
 
-    UsuarioIsAdmin           BOOLEAN,
+select * from Usuarios;
+
+/*
+,
+
+    UsuarioIsAdmin           VARCHAR(11), /BOOLEAN 
     -- fk
     UsuarioEmprestimosAtivos INT,
     UsuarioHistorico         INT,
-    
-    PRIMARY KEY(UsuarioId)
-);
+*/
 
 /*
 CREATE TABLE Historico ();
