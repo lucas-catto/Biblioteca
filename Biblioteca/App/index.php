@@ -26,9 +26,12 @@
             HomeController::tentar_login();
             break;
 
-        case '/novo_aluno':
+        /* Admin */
+        case '/admin/novo_aluno':
             HomeController::novo_aluno();
             break;
+
+        /* -- Admin -- */
         
         default:
             HomeController::notFound();
