@@ -7,7 +7,7 @@
 
     <h1>Novo Livro</h1>
     
-    <form action="#" method="post">
+    <form action="/admin/3" method="post">
         <input type="text"   name="titulo"     placeholder="Título"             required autocomplete="off">
         <input type="text"   name="autor"      placeholder="Autor"              required autocomplete="off">
         <input type="number" name="quantidade" placeholder="Quantidade" min="1" required autocomplete="off">

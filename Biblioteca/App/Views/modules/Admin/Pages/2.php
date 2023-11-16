@@ -24,7 +24,7 @@
 
     <h1>Cadastrar Aluno</h1>
     
-    <form action="./2.php" method="post">
+    <form action="/admin/2" method="post">
         <input  type="text"   name="nome"  placeholder="Nome Completo"        required autocomplete="off">
         <input  type="text"   name="email" placeholder="E-mail Institucional" required autocomplete="off">
         <!-- <input  type="number" name="rm"    placeholder="RM"                            autocomplete="off"> -->
@@ -44,48 +44,11 @@
             
             $currentPassword = passwordGenerate();
 
+            $_SESSION['NovoAlunoSenha'] = $currentPassword;
+
             echo "<p>Senha: <strong>" . $currentPassword . "</strong></p>"; //  - Trocar senha ao logar.
         ?>
         
         <button type="submit">Cadastrar Aluno (a)</button>
     </form>
-
-    <?php
-    
-        $host    = 'localhost';
-        $dbname  = 'Biblioteca';
-        $usuario = 'root';
-        $senha   = '';
-
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $usuario, $senha);
-    
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            
-            $nome          = isset($_POST["nome"])          ? $_POST["nome"]          : false;
-            $email         = isset($_POST["email"])         ? $_POST["email"]         : false;
-            $tipoDeUsuario = isset($_POST["tipoDeUsuario"]) ? $_POST["tipoDeUsuario"] : false;
-            $senha         = isset($currentPassword)        ? $currentPassword        : false;
-    
-            if ($senha != false) {
-                $senha = password_hash($senha, PASSWORD_DEFAULT);
-            }
-    
-            // validar email
-            if ($nome          != false &&
-                $email         != false &&
-                $tipoDeUsuario != false &&
-                $senha         != false /* */
-            ) {
-
-                
-
-                $sql = $pdo->prepare("INSERT INTO Usuarios VALUES (null,?,?,?)");
-                
-                if ($sql->execute(array($nome, $email, $senha))) {
-                    echo "<script>alert('$nome');</script>";
-                }
-
-            }
-        }
-    ?>
 </main>

@@ -27,8 +27,16 @@
             break;
 
         /* Admin */
-        case '/admin/novo_aluno':
-            HomeController::novo_aluno();
+        case '/admin/1':
+            var_dump($_POST);
+            break;
+        
+        case '/admin/2':
+            var_dump($_POST);
+            break;
+        
+        case '/admin/3':
+            var_dump($_POST);
             break;
 
         /* -- Admin -- */
