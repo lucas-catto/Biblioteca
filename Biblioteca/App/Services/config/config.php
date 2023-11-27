@@ -3,7 +3,7 @@
     $host    = "localhost";
     $dbname  = "Biblioteca";
     $usuario = "root";
-    $senha   = "";
+    $senha   = "lucas";
 
     try {
         $pdo = new PDO("mysql:host=$host;dbname=$dbname", $usuario, $senha);

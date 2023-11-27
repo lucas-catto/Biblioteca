@@ -55,5 +55,13 @@
                 }
             }
         }
+
+        public static function admin_3 () {
+            
+            include './Models/Livro/Livro.php';
+
+            $livro = new Livro();
+            
+        }
     }
 ?>

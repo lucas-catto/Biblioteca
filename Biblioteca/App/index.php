@@ -41,7 +41,7 @@
             break;
         
         case '/admin/3':
-            var_dump($_POST);
+            AdminController::admin_3();
             break;
 
         /* -- Admin -- */
