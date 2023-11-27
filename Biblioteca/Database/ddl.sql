@@ -1,6 +1,7 @@
+
 /*
-    Modelando o SQL, por enqunto.
-    Ainda não é o modelo final.
+    Modelando o SQL.
+    Ainda não é a DDL final.
 */
 
 
@@ -45,19 +46,4 @@ CREATE TABLE Usuarios (
     UsuarioSenha             VARCHAR(355) NOT NULL
 );
 
-select * from Alunos;
-
-/*
-,
-
-    UsuarioIsAdmin           VARCHAR(11), /BOOLEAN 
-    -- fk
-    UsuarioEmprestimosAtivos INT,
-    UsuarioHistorico         INT,
-*/
-
-/*
-CREATE TABLE Historico ();
-CREATE TABLE EmprestimosAtivos (); -- usuario
-CREATE TABLE Emprestimos (); 
-*/
+SELECT * FROM Usuarios;

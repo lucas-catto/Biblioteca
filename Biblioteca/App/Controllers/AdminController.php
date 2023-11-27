@@ -13,17 +13,47 @@
             $aluno->alunoTipo  = isset($_POST['tipoDeUsuario'])     ? $_POST['tipoDeUsuario']     : false;
             $aluno->alunoSenha = isset($_SESSION['NovoAlunoSenha']) ? $_SESSION['NovoAlunoSenha'] : false;
 
-            include './Services/config/config.php';
+            // Verificar se os dados não estão faltando
+            if (
+                $aluno->alunoNome  == true && 
+                $aluno->alunoEmail == true && 
+                $aluno->alunoTipo  == true &&
+                $aluno->alunoSenha == true
+            ) {
 
-            $sql = $pdo->prepare('INSERT INTO Usuarios VALUES (null,?,?,?,?)');
-            $sql->execute(array(
-                $aluno->alunoNome,
-                $aluno->alunoEmail,
-                $aluno->alunoTipo,
-                $aluno->alunoSenha
-            ));
+                include './Services/config/config.php';
+    
+                // verificando se o email existe
+                $sql = $pdo->prepare('SELECT COUNT(*) AS EmailExiste FROM Usuarios WHERE UsuarioEmail = ?');
+                $sql->execute(array($aluno->alunoEmail));
+    
+                $emailExiste = $sql->fetch(PDO::FETCH_ASSOC);
+    
+                if ($emailExiste['EmailExiste'] == 0) {
+    
+                    $sql = $pdo->prepare('INSERT INTO Usuarios VALUES (null,?,?,?,?)');
 
-            header("Location: ./../admin");
+                    $sql->execute(array(
+                        $aluno->alunoNome,
+                        $aluno->alunoEmail,
+                        $aluno->alunoTipo,
+                        $aluno->alunoSenha
+                    ));
+        
+                    echo "<script>alert('$aluno->alunoNome registrado(a)!')</script>";
+                    
+                    echo '<script>
+                            window.location.href = "./../admin";
+                        </script>';
+                }
+                else {
+                    echo "<script>alert('Email: $aluno->alunoEmail já está em uso!')</script>";
+
+                    echo '<script>
+                            window.location.href = "./../admin";
+                        </script>';
+                }
+            }
         }
     }
 ?>
