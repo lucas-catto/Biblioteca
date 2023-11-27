@@ -32,6 +32,8 @@ CREATE TABLE Livros (
 
     LivroAutor               INT,
 
+    PRIMARY KEY (LivroId),
+
     FOREIGN KEY (LivroAutor) REFERENCES Autores(AutorId)
 );
 
@@ -39,10 +41,11 @@ CREATE TABLE Usuarios (
     UsuarioId                INT          NOT NULL PRIMARY KEY AUTO_INCREMENT,
     UsuarioNome              VARCHAR(80)  NOT NULL,
     UsuarioEmail             VARCHAR(80)  NOT NULL,
+    UsuarioTipo              VARCHAR(5)   NOT NULL,
     UsuarioSenha             VARCHAR(355) NOT NULL
 );
 
-select * from Usuarios;
+select * from Alunos;
 
 /*
 ,

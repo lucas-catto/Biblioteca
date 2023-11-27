@@ -2,6 +2,6 @@
 USE Biblioteca;
 
 INSERT INTO Usuarios VALUES
-(null, "Lucas Catto", "lucas@email.com", "senha123", null, null, null);
+(null, "Lucas Catto", "lucas@email.com", "senha123");
 
 SELECT * FROM Usuarios;
