@@ -21,34 +21,45 @@
                 $aluno->alunoSenha == true
             ) {
 
-                include './Services/config/config.php';
-    
-                // verificando se o email existe
-                $sql = $pdo->prepare('SELECT COUNT(*) AS EmailExiste FROM Usuarios WHERE UsuarioEmail = ?');
-                $sql->execute(array($aluno->alunoEmail));
-    
-                $emailExiste = $sql->fetch(PDO::FETCH_ASSOC);
-    
-                if ($emailExiste['EmailExiste'] == 0) {
-    
-                    $sql = $pdo->prepare('INSERT INTO Usuarios VALUES (null,?,?,?,?)');
+                if ($aluno->alunoTipo == "Admin" || $aluno->alunoTipo == "Comum") {
 
-                    $sql->execute(array(
-                        $aluno->alunoNome,
-                        $aluno->alunoEmail,
-                        $aluno->alunoTipo,
-                        $aluno->alunoSenha
-                    ));
-        
-                    echo "<script>alert('$aluno->alunoNome registrado(a)!')</script>";
                     
-                    echo '<script>
-                            window.location.href = "./../admin";
-                        </script>';
+                    include './Services/config/config.php';
+        
+                    // verificando se o email existe
+                    $sql = $pdo->prepare('SELECT COUNT(*) AS EmailExiste FROM Usuarios WHERE UsuarioEmail = ?');
+                    $sql->execute(array($aluno->alunoEmail));
+        
+                    $emailExiste = $sql->fetch(PDO::FETCH_ASSOC);
+        
+                    if ($emailExiste['EmailExiste'] == 0) {
+        
+                        $sql = $pdo->prepare('INSERT INTO Usuarios VALUES (null,?,?,?,?)');
+    
+                        $sql->execute(array(
+                            $aluno->alunoNome,
+                            $aluno->alunoEmail,
+                            $aluno->alunoTipo,
+                            $aluno->alunoSenha
+                        ));
+            
+                        echo "<script>alert('$aluno->alunoNome registrado(a)!')</script>";
+                        
+                        echo '<script>
+                                window.location.href = "./../admin";
+                            </script>';
+                    }
+                    else {
+                        echo "<script>alert('Email: $aluno->alunoEmail já está em uso!')</script>";
+    
+                        echo '<script>
+                                window.location.href = "./../admin";
+                            </script>';
+                    }
                 }
                 else {
-                    echo "<script>alert('Email: $aluno->alunoEmail já está em uso!')</script>";
-
+                    echo "<script>alert('Tipo: $aluno->alunoTipo é inválido!')</script>";
+    
                     echo '<script>
                             window.location.href = "./../admin";
                         </script>';

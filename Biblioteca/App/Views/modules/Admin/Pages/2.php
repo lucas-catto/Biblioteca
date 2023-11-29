@@ -35,8 +35,8 @@
             <label  for="tipoDeUsuario">Tipo de Usuário:</label>
 
             <select id="tipoDeUsuario" name="tipoDeUsuario">
-                <option value="user" selected> Leitor (a)    </option>
-                <option value="admin">         Administrador </option>
+                <option value="Comum" selected> Leitor (a)    </option>
+                <option value="Admin">          Administrador </option>
             </select>
         </div>
             
