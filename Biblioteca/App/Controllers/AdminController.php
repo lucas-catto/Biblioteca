@@ -68,11 +68,58 @@
         }
 
         public static function admin_3 () {
+
+            // var_dump($_POST);
             
             include './Models/Livro/Livro.php';
 
             $livro = new Livro();
-            
+
+            $livro->livroTitulo     = isset($_POST['titulo'])     ? $_POST['titulo']     : false;
+            $livro->livroAutor      = isset($_POST['autor'])      ? $_POST['autor']      : false;
+            $livro->livroQuantidade = isset($_POST['quantidade']) ? $_POST['quantidade'] : false;
+            $livro->livroCodigo     = isset($_POST['codigo'])     ? $_POST['codigo']     : false;
+
+            if (
+                $livro->livroTitulo     == true &&
+                $livro->livroAutor      == true &&
+                $livro->livroQuantidade == true &&
+                $livro->livroCodigo     == true
+            ) {
+
+                include './Services/config/config.php';
+
+                // verificando se existe um título de mesmo autor, sendo assim, altera apenas a quantidade.
+                $sql = $pdo->prepare('SELECT * FROM Livros WHERE LivroTitulo = ? AND LivroAutor = ?');
+                $sql->execute(array(
+                    $livro->livroTitulo,
+                    $livro->livroAutor
+                ));
+                
+                if ($sql->rowCount() == 0) {
+
+                    $sql = $pdo->prepare('INSERT INTO Livros VALUES (null,?,?,?,?)');
+                    $sql->execute(array(
+                        $livro->livroTitulo,
+                        $livro->livroAutor,
+                        $livro->livroQuantidade,
+                        $livro->livroCodigo
+                    ));
+
+                    echo "<script>alert('O Livro $livro->livroTitulo foi cadastrado!')</script>";
+    
+                    echo '<script>
+                            window.location.href = "./../admin";
+                        </script>';
+                }
+                else {
+                    echo "<script>alert('Livro \"$livro->livroTitulo\" existe! - Update')</script>";
+
+                    echo '<script>
+                            window.location.href = "./../admin";
+                        </script>';
+                }
+            }
         }
     }
 ?>
