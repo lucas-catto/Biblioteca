@@ -32,6 +32,7 @@ section {
 .section-2 {
     justify-content: space-evenly;
     flex-wrap:       wrap;
+    padding:         20px 0;
 }
 
 button {
@@ -55,5 +56,11 @@ button:hover {
 /* Main */
 
 main {
-    min-height: 100vh;
+    width:            100%;
+    min-height:       100vh;
+    padding:          35px 15px;
+    display:          flex;
+    justify-content:  flex-start;
+    align-items:      center;
+    flex-direction:   column;
 }

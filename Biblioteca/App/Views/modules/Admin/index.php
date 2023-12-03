@@ -1,3 +1,9 @@
+<?php
+    if ($_SESSION['UsuarioTipo'] != 'Admin') {
+        header('Location: ./');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,10 +35,31 @@
         </header>
 
         <main id="main">
-            
+            <?php
+
+                date_default_timezone_set('America/Sao_Paulo');
+                $hora = date('H');
+
+                if ($hora >= 00 and $hora <= 12) {
+                    $periodo = 'Bom Dia';
+                }
+                else if ($hora <= 18) {
+                    $periodo = 'Boa Tarde';
+                }
+                else {
+                    $periodo = 'Boa Noite';
+                }
+
+                echo "<h1>Olá " . $_SESSION['UsuarioNome'] . ", $periodo!</h1>";
+            ?>
+
+            <div class="clock">
+                <h3 id="time"></h3>
+            </div>
         </main>
 
         <?php include './Views/footer/footer.php'; ?>
         <script src="./Views/JS/Admin/AJAX/script.js"></script>
+        <script src="./Views/JS/Admin/Relogio/script.js"></script>
     </body>
 </html>
