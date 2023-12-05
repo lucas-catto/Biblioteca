@@ -46,6 +46,11 @@
 
         /* -- Admin -- */
         
+        case '/logout':
+            HomeController::logout();
+            break;
+
+
         default:
             HomeController::notFound();
             break;

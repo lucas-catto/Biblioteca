@@ -70,6 +70,10 @@
             }
         }
         
+        public static function logout () {
+            include './Views/logout/logout.php';
+        }
+        
         public static function notFound () {
             include './Views/modules/404/index.php';
         }
