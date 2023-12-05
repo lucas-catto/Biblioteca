@@ -35,7 +35,7 @@
                 &&
                 $login->senha == true
             ) {
-                $sql = $pdo->prepare("SELECT *, UsuarioTipo, UsuarioNome, UsuarioId FROM Usuarios WHERE UsuarioEmail = ? AND UsuarioSenha = ?");
+                $sql = $pdo->prepare("SELECT * FROM Usuarios WHERE UsuarioEmail = ? AND UsuarioSenha = ?");
                 $sql->execute(array(
                     $login->email,
                     $login->senha
@@ -51,7 +51,7 @@
                     
 
                     if ($usuario['UsuarioTipo'] === "Comum") {
-                        
+                        header('Location: ./user');
                     }
                     else {
                         header('Location: ./admin');
