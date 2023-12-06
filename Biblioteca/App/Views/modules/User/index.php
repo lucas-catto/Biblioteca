@@ -1,3 +1,9 @@
+<?php
+    if ($_SESSION['UsuarioTipo'] != 'Comum') {
+        header('Location: ./');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,7 +19,9 @@
             <section class="section-1">
                 <img src="./Views/img/logo.png" alt="logo CosmusX">
 
-                <button id="">Log Out</button>
+                <form action="./logout" method="POST">
+                    <button type="submit">Log Out</button>
+                </form>
             </section>
 
             <div class="line"></div>
