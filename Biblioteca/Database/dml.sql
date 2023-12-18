@@ -7,3 +7,4 @@ INSERT INTO Livros VALUES
 (null, '1984', 25, 'George Orwell', 54321),
 (null, 'The Great Gatsby', 40, 'F. Scott Fitzgerald', 98765),
 (null, 'The Hobbit', 35, 'J.R.R. Tolkien', 13579);
+select * from Usuarios;
